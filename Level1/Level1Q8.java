@@ -1,17 +1,21 @@
 package Level1;
-// Write a program to count down the number from the user input value to 1 using a while loop for a rocket launch
-// Hint => 
-// Create a variable counter to take user inputted value for the countdown.
-// Use the while loop to check if the counter is 1
-// Inside a while loop, print the value of the counter and decrement the counter.
+import java.util.Scanner;
 
 public class Level1Q8 {
+    public static int[] findRemainderAndQuotient(int number, int divisor) {
+        int quotient = number / divisor;
+        int remainder = number % divisor;
+        return new int[]{quotient, remainder};
+    }
+
     public static void main(String[] args) {
-        int counter = 10; 
-        while (counter > 0) {
-            System.out.println("Countdown: " + counter);
-            counter--; 
-        }
-        System.out.println("Liftoff!");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number: ");
+        int number = sc.nextInt();
+        System.out.print("Enter divisor: ");
+        int divisor = sc.nextInt();
+
+        int[] result = findRemainderAndQuotient(number, divisor);
+        System.out.println("Quotient: " + result[0] + ", Remainder: " + result[1]);
     }
 }

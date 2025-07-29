@@ -1,14 +1,17 @@
 package Level1;
-
+import java.util.Scanner;
 
 public class Level1Q2 {
-   public static void main(String[] args) {
-        int number1 = 10;
-        int number2 = 20;
-        int number3 = 30;
+    public static int calculateHandshakes(int n) {
+        return (n * (n - 1)) / 2;
+    }
 
-        boolean isFirstSmallest = (number1 < number2) && (number1 < number3);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of students: ");
+        int n = sc.nextInt();
 
-        System.out.println("Is the first number the smallest? " + isFirstSmallest);
-    } 
+        int handshakes = calculateHandshakes(n);
+        System.out.println("Maximum number of handshakes: " + handshakes);
+    }
 }

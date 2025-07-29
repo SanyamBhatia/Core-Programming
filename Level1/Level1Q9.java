@@ -1,12 +1,21 @@
 package Level1;
-//Rewrite program 8 to do the countdown using the for-loop
+import java.util.Scanner;
 
 public class Level1Q9 {
+    public static int[] findRemainderAndQuotient(int numberOfChocolates, int numberOfChildren) {
+        int eachGets = numberOfChocolates / numberOfChildren;
+        int remaining = numberOfChocolates % numberOfChildren;
+        return new int[]{eachGets, remaining};
+    }
+
     public static void main(String[] args) {
-        int counter = 10; // Example input for countdown
-        for (int i = counter; i > 0; i--) {
-            System.out.println("Countdown: " + i);
-        }
-        System.out.println("Liftoff!");
-    }    
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of chocolates: ");
+        int chocolates = sc.nextInt();
+        System.out.print("Enter number of children: ");
+        int children = sc.nextInt();
+
+        int[] result = findRemainderAndQuotient(chocolates, children);
+        System.out.println("Each child gets: " + result[0] + ", Remaining chocolates: " + result[1]);
+    }
 }

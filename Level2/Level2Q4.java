@@ -1,22 +1,18 @@
-import java.util.Scanner;
-
+package Level2;
 public class Level2Q4 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a positive number: ");
-        int number = sc.nextInt();
+    public static double convertKmToMiles(double km) {
+        return km * 0.621371;
+    }
 
-        for (int i = 1; i <= number; i++) {
-            if (i % 3 == 0 && i % 5 == 0)
-                System.out.println("FizzBuzz");
-            else if (i % 3 == 0)
-                System.out.println("Fizz");
-            else if (i % 5 == 0)
-                System.out.println("Buzz");
-            else
-                System.out.println(i);
-        }
+    public static double convertMilesToKm(double miles) {
+        return miles * 1.60934;
+    }
 
-        sc.close();
+    public static double convertMetersToFeet(double meters) {
+        return meters * 3.28084;
+    }
+
+    public static double convertFeetToMeters(double feet) {
+        return feet * 0.3048;
     }
 }

@@ -2,26 +2,18 @@ package Level1;
 import java.util.Scanner;
 
 public class Level1Q10 {
+    public static double calculateWindChill(double temperature, double windSpeed) {
+        return 35.74 + 0.6215 * temperature + (0.4275 * temperature - 35.75) * Math.pow(windSpeed, 0.16);
+    }
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter temperature in Fahrenheit: ");
+        double temp = sc.nextDouble();
+        System.out.print("Enter wind speed in mph: ");
+        double wind = sc.nextDouble();
 
-        double total = 0.0;
-        double number;
-
-        System.out.println("Enter numbers to sum (enter 0 to stop):");
-
-        // Read the first input
-        number = scanner.nextDouble();
-
-        // Loop until the user enters 0
-        while (number != 0) {
-            total += number;  // Add to total
-            System.out.println("Current Total: " + total);
-            System.out.print("Enter another number (0 to stop): ");
-            number = scanner.nextDouble();  // Ask again
-        }
-
-        System.out.println("Final Total Sum: " + total);
-        scanner.close();
+        double windChill = calculateWindChill(temp, wind);
+        System.out.printf("Wind Chill Temperature: %.2f°F\n", windChill);
     }
 }

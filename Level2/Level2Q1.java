@@ -1,22 +1,49 @@
+package Level2;
 import java.util.Scanner;
 
 public class Level2Q1 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a natural number: ");
-        int number = sc.nextInt();
-
-        if (number > 0) {
-            for (int i = 1; i <= number; i++) {
-                if (i % 2 == 0)
-                    System.out.println(i + " is Even");
-                else
-                    System.out.println(i + " is Odd");
-            }
-        } else {
-            System.out.println("Please enter a natural number greater than 0.");
+    public static int[] findFactors(int number) {
+        int count = 0;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) count++;
         }
 
-        sc.close();
+        int[] factors = new int[count];
+        int index = 0;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) factors[index++] = i;
+        }
+        return factors;
+    }
+
+    public static int sumFactors(int[] factors) {
+        int sum = 0;
+        for (int factor : factors) sum += factor;
+        return sum;
+    }
+
+    public static long productFactors(int[] factors) {
+        long product = 1;
+        for (int factor : factors) product *= factor;
+        return product;
+    }
+
+    public static double sumOfSquares(int[] factors) {
+        double sum = 0;
+        for (int factor : factors) sum += Math.pow(factor, 2);
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = sc.nextInt();
+
+        int[] factors = findFactors(number);
+        System.out.print("Factors: ");
+        for (int f : factors) System.out.print(f + " ");
+        System.out.println("\nSum of factors: " + sumFactors(factors));
+        System.out.println("Product of factors: " + productFactors(factors));
+        System.out.println("Sum of squares of factors: " + sumOfSquares(factors));
     }
 }

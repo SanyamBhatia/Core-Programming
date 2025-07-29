@@ -1,21 +1,31 @@
+package Level2;
 import java.util.Scanner;
 
 public class Level2Q2 {
+    public static int sumRecursive(int n) {
+        if (n == 1) return 1;
+        return n + sumRecursive(n - 1);
+    }
+
+    public static int sumFormula(int n) {
+        return n * (n + 1) / 2;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter salary: ");
-        double salary = sc.nextDouble();
+        System.out.print("Enter a natural number: ");
+        int n = sc.nextInt();
 
-        System.out.print("Enter years of service: ");
-        int service = sc.nextInt();
-
-        if (service > 5) {
-            double bonus = salary * 0.05;
-            System.out.println("Bonus: ₹" + bonus);
-        } else {
-            System.out.println("No bonus");
+        if (n <= 0) {
+            System.out.println("Not a natural number.");
+            return;
         }
 
-        sc.close();
+        int sumRec = sumRecursive(n);
+        int sumForm = sumFormula(n);
+
+        System.out.println("Sum using recursion: " + sumRec);
+        System.out.println("Sum using formula: " + sumForm);
+        System.out.println("Results are " + (sumRec == sumForm ? "equal." : "not equal."));
     }
 }

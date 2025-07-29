@@ -1,22 +1,21 @@
 package Level1;
-// Write a program to check for the natural number and write the sum of n natural numbers 
-// Hint => 
-// A Natural Number is a positive integer (1,2,3, etc) sometimes with the inclusion of 0
-// A sum of n natural numbers is n * (n+1) / 2 
-// I/P => number
-// O/P => If the number is a positive integer then the output is
-// The sum of ___ natural numbers is ___
-// Otherwise 
-// The number ___ is not a natural number
+import java.util.Scanner;
 
 public class Level1Q4 {
+    public static int checkSign(int number) {
+        if (number > 0) return 1;
+        else if (number < 0) return -1;
+        else return 0;
+    }
+
     public static void main(String[] args) {
-        int number = 10; // Example input
-        if (number >= 0) {
-            int sum = number * (number + 1) / 2;
-            System.out.println("The sum of " + number + " natural numbers is " + sum);
-        } else {
-            System.out.println("The number " + number + " is not a natural number");
-        }
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+
+        int result = checkSign(num);
+        if (result == 1) System.out.println("Number is Positive");
+        else if (result == -1) System.out.println("Number is Negative");
+        else System.out.println("Number is Zero");
     }
 }

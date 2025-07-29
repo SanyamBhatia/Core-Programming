@@ -1,13 +1,22 @@
 package Level1;
-// Write a program to check if a number is divisible by 5
-// I/P => number
-// O/P => Is the number ___ divisible by 5? ___
+import java.util.Scanner;
 
 public class Level1Q1 {
-    public static void main(String[] args) {
-        int number = 25; 
-        boolean isDivisible = (number % 5 == 0);
+    public static double calculateSimpleInterest(double principal, double rate, double time) {
+        return (principal * rate * time) / 100;
+    }
 
-        System.out.println("Is the number " + number + " divisible by 5? " + isDivisible);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Principal: ");
+        double principal = sc.nextDouble();
+        System.out.print("Enter Rate of Interest: ");
+        double rate = sc.nextDouble();
+        System.out.print("Enter Time (in years): ");
+        double time = sc.nextDouble();
+
+        double interest = calculateSimpleInterest(principal, rate, time);
+        System.out.println("The Simple Interest is " + interest + 
+            " for Principal " + principal + ", Rate of Interest " + rate + " and Time " + time);
     }
 }
