@@ -1,21 +1,29 @@
-package Level1;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Level1Q8 {
-    public static int[] findRemainderAndQuotient(int number, int divisor) {
-        int quotient = number / divisor;
-        int remainder = number % divisor;
-        return new int[]{quotient, remainder};
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number: ");
+        System.out.print("Enter a number to find its factors: ");
         int number = sc.nextInt();
-        System.out.print("Enter divisor: ");
-        int divisor = sc.nextInt();
 
-        int[] result = findRemainderAndQuotient(number, divisor);
-        System.out.println("Quotient: " + result[0] + ", Remainder: " + result[1]);
+        int maxFactor = 10;
+        int[] factors = new int[maxFactor];
+        int index = 0;
+
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                if (index == maxFactor) {
+                    maxFactor *= 2;
+                    factors = Arrays.copyOf(factors, maxFactor);
+                }
+                factors[index++] = i;
+            }
+        }
+
+        System.out.print("Factors of " + number + ": ");
+        for (int i = 0; i < index; i++) {
+            System.out.print(factors[i] + " ");
+        }
     }
 }

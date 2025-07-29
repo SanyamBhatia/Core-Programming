@@ -1,23 +1,36 @@
-package Level1;
 import java.util.Scanner;
 
 public class Level1Q7 {
-    public static int[] findSmallestAndLargest(int number1, int number2, int number3) {
-        int smallest = Math.min(number1, Math.min(number2, number3));
-        int largest = Math.max(number1, Math.max(number2, number3));
-        return new int[]{smallest, largest};
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter first number: ");
-        int n1 = sc.nextInt();
-        System.out.print("Enter second number: ");
-        int n2 = sc.nextInt();
-        System.out.print("Enter third number: ");
-        int n3 = sc.nextInt();
+        System.out.print("Enter a natural number: ");
+        int number = sc.nextInt();
 
-        int[] result = findSmallestAndLargest(n1, n2, n3);
-        System.out.println("Smallest: " + result[0] + ", Largest: " + result[1]);
+        if (number < 1) {
+            System.out.println("Invalid input. Enter a natural number.");
+            return;
+        }
+
+        int[] evens = new int[number / 2 + 1];
+        int[] odds = new int[number / 2 + 1];
+        int evenIndex = 0, oddIndex = 0;
+
+        for (int i = 1; i <= number; i++) {
+            if (i % 2 == 0) {
+                evens[evenIndex++] = i;
+            } else {
+                odds[oddIndex++] = i;
+            }
+        }
+
+        System.out.print("Even numbers: ");
+        for (int i = 0; i < evenIndex; i++) {
+            System.out.print(evens[i] + " ");
+        }
+
+        System.out.print("\nOdd numbers: ");
+        for (int i = 0; i < oddIndex; i++) {
+            System.out.print(odds[i] + " ");
+        }
     }
 }

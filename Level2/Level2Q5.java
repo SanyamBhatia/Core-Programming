@@ -1,22 +1,23 @@
-package Level2;
+import java.util.Scanner;
+
 public class Level2Q5 {
-    public static double convertYardsToFeet(double yards) {
-        return yards * 3;
-    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = sc.nextInt();
 
-    public static double convertFeetToYards(double feet) {
-        return feet * 0.333333;
-    }
+        int[] digits = new int[20];
+        int index = 0;
 
-    public static double convertMetersToInches(double meters) {
-        return meters * 39.3701;
-    }
+        while (number != 0) {
+            digits[index++] = number % 10;
+            number /= 10;
+        }
 
-    public static double convertInchesToMeters(double inches) {
-        return inches * 0.0254;
-    }
-
-    public static double convertInchesToCentimeters(double inches) {
-        return inches * 2.54;
+        System.out.print("Reversed number: ");
+        for (int i = 0; i < index; i++) {
+            System.out.print(digits[i]);
+        }
+        System.out.println();
     }
 }

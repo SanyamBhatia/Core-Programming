@@ -1,21 +1,29 @@
-package Level1;
 import java.util.Scanner;
 
 public class Level1Q9 {
-    public static int[] findRemainderAndQuotient(int numberOfChocolates, int numberOfChildren) {
-        int eachGets = numberOfChocolates / numberOfChildren;
-        int remaining = numberOfChocolates % numberOfChildren;
-        return new int[]{eachGets, remaining};
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number of chocolates: ");
-        int chocolates = sc.nextInt();
-        System.out.print("Enter number of children: ");
-        int children = sc.nextInt();
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
 
-        int[] result = findRemainderAndQuotient(chocolates, children);
-        System.out.println("Each child gets: " + result[0] + ", Remaining chocolates: " + result[1]);
+        int[][] matrix = new int[rows][cols];
+        int[] array = new int[rows * cols];
+        int index = 0;
+
+        System.out.println("Enter elements of the 2D array:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print("Element [" + i + "][" + j + "]: ");
+                matrix[i][j] = sc.nextInt();
+                array[index++] = matrix[i][j];
+            }
+        }
+
+        System.out.print("Copied 1D Array: ");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
     }
 }

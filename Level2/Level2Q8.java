@@ -1,40 +1,46 @@
-package Level2;
 import java.util.Scanner;
 
 public class Level2Q8 {
-    public static int findYoungest(int[] ages) {
-        int minIndex = 0;
-        for (int i = 1; i < ages.length; i++) {
-            if (ages[i] < ages[minIndex]) minIndex = i;
-        }
-        return minIndex;
-    }
-
-    public static int findTallest(double[] heights) {
-        int maxIndex = 0;
-        for (int i = 1; i < heights.length; i++) {
-            if (heights[i] > heights[maxIndex]) maxIndex = i;
-        }
-        return maxIndex;
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int[] ages = new int[3];
-        double[] heights = new double[3];
-        String[] names = {"Amar", "Akbar", "Anthony"};
 
-        for (int i = 0; i < 3; i++) {
-            System.out.print("Enter age of " + names[i] + ": ");
-            ages[i] = sc.nextInt();
-            System.out.print("Enter height of " + names[i] + " in cm: ");
-            heights[i] = sc.nextDouble();
+        System.out.print("Enter number of students: ");
+        int n = sc.nextInt();
+
+        double[] physics = new double[n];
+        double[] chemistry = new double[n];
+        double[] maths = new double[n];
+        double[] percentage = new double[n];
+        String[] grades = new String[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter marks (0-100) for Physics, Chemistry, Maths of student " + (i + 1) + ":");
+            double p = sc.nextDouble();
+            double c = sc.nextDouble();
+            double m = sc.nextDouble();
+
+            if (p < 0 || c < 0 || m < 0) {
+                System.out.println("Marks cannot be negative. Re-enter student " + (i + 1));
+                i--;
+                continue;
+            }
+            physics[i] = p;
+            chemistry[i] = c;
+            maths[i] = m;
         }
 
-        int youngest = findYoungest(ages);
-        int tallest = findTallest(heights);
+        for (int i = 0; i < n; i++) {
+            percentage[i] = (physics[i] + chemistry[i] + maths[i]) / 3.0;
+            if (percentage[i] >= 90) grades[i] = "A";
+            else if (percentage[i] >= 75) grades[i] = "B";
+            else if (percentage[i] >= 50) grades[i] = "C";
+            else grades[i] = "F";
+        }
 
-        System.out.println("Youngest is " + names[youngest]);
-        System.out.println("Tallest is " + names[tallest]);
+        System.out.println("Physics\tChemistry\tMaths\tPercentage\tGrade");
+        for (int i = 0; i < n; i++) {
+            System.out.printf("%.2f\t%.2f\t\t%.2f\t%.2f\t\t%s\n",
+                    physics[i], chemistry[i], maths[i], percentage[i], grades[i]);
+        }
     }
 }

@@ -1,22 +1,23 @@
-package Level1;
 import java.util.Scanner;
 
 public class Level1Q1 {
-    public static double calculateSimpleInterest(double principal, double rate, double time) {
-        return (principal * rate * time) / 100;
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter Principal: ");
-        double principal = sc.nextDouble();
-        System.out.print("Enter Rate of Interest: ");
-        double rate = sc.nextDouble();
-        System.out.print("Enter Time (in years): ");
-        double time = sc.nextDouble();
+        int[] ages = new int[10];
 
-        double interest = calculateSimpleInterest(principal, rate, time);
-        System.out.println("The Simple Interest is " + interest + 
-            " for Principal " + principal + ", Rate of Interest " + rate + " and Time " + time);
+        for (int i = 0; i < ages.length; i++) {
+            System.out.print("Enter age of student " + (i + 1) + ": ");
+            ages[i] = sc.nextInt();
+        }
+
+        for (int age : ages) {
+            if (age < 0) {
+                System.out.println("Invalid age");
+            } else if (age >= 18) {
+                System.out.println("The student with the age " + age + " can vote.");
+            } else {
+                System.out.println("The student with the age " + age + " cannot vote.");
+            }
+        }
     }
 }

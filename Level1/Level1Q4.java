@@ -1,21 +1,29 @@
-package Level1;
 import java.util.Scanner;
 
 public class Level1Q4 {
-    public static int checkSign(int number) {
-        if (number > 0) return 1;
-        else if (number < 0) return -1;
-        else return 0;
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a number: ");
-        int num = sc.nextInt();
+        double[] numbers = new double[10];
+        double total = 0.0;
+        int index = 0;
 
-        int result = checkSign(num);
-        if (result == 1) System.out.println("Number is Positive");
-        else if (result == -1) System.out.println("Number is Negative");
-        else System.out.println("Number is Zero");
+        while (true) {
+            System.out.print("Enter a number: ");
+            double num = sc.nextDouble();
+
+            if (num <= 0 || index == 10) {
+                break;
+            }
+
+            numbers[index] = num;
+            index++;
+        }
+
+        System.out.print("Numbers entered: ");
+        for (int i = 0; i < index; i++) {
+            System.out.print(numbers[i] + " ");
+            total += numbers[i];
+        }
+        System.out.println("\nTotal = " + total);
     }
 }

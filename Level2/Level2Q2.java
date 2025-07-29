@@ -1,31 +1,25 @@
-package Level2;
 import java.util.Scanner;
 
 public class Level2Q2 {
-    public static int sumRecursive(int n) {
-        if (n == 1) return 1;
-        return n + sumRecursive(n - 1);
-    }
-
-    public static int sumFormula(int n) {
-        return n * (n + 1) / 2;
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a natural number: ");
-        int n = sc.nextInt();
+        String[] names = {"Amar", "Akbar", "Anthony"};
+        int[] ages = new int[3];
+        double[] heights = new double[3];
 
-        if (n <= 0) {
-            System.out.println("Not a natural number.");
-            return;
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Enter age and height for " + names[i] + ":");
+            ages[i] = sc.nextInt();
+            heights[i] = sc.nextDouble();
         }
 
-        int sumRec = sumRecursive(n);
-        int sumForm = sumFormula(n);
+        int youngest = 0, tallest = 0;
+        for (int i = 1; i < 3; i++) {
+            if (ages[i] < ages[youngest]) youngest = i;
+            if (heights[i] > heights[tallest]) tallest = i;
+        }
 
-        System.out.println("Sum using recursion: " + sumRec);
-        System.out.println("Sum using formula: " + sumForm);
-        System.out.println("Results are " + (sumRec == sumForm ? "equal." : "not equal."));
+        System.out.println("Youngest: " + names[youngest]);
+        System.out.println("Tallest: " + names[tallest]);
     }
 }

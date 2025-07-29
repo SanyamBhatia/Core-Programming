@@ -1,18 +1,39 @@
-package Level2;
+import java.util.Scanner;
+
 public class Level2Q4 {
-    public static double convertKmToMiles(double km) {
-        return km * 0.621371;
-    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = sc.nextInt();
 
-    public static double convertMilesToKm(double miles) {
-        return miles * 1.60934;
-    }
+        int maxDigit = 10;
+        int[] digits = new int[maxDigit];
+        int index = 0;
 
-    public static double convertMetersToFeet(double meters) {
-        return meters * 3.28084;
-    }
+        while (number != 0) {
+            if (index == maxDigit) {
+                maxDigit += 10;
+                int[] temp = new int[maxDigit];
+                for (int i = 0; i < digits.length; i++) {
+                    temp[i] = digits[i];
+                }
+                digits = temp;
+            }
+            digits[index++] = number % 10;
+            number /= 10;
+        }
 
-    public static double convertFeetToMeters(double feet) {
-        return feet * 0.3048;
+        int max = 0, secondMax = 0;
+        for (int i = 0; i < index; i++) {
+            if (digits[i] > max) {
+                secondMax = max;
+                max = digits[i];
+            } else if (digits[i] > secondMax && digits[i] != max) {
+                secondMax = digits[i];
+            }
+        }
+
+        System.out.println("Largest digit: " + max);
+        System.out.println("Second largest digit: " + secondMax);
     }
 }

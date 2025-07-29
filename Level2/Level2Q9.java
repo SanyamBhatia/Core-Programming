@@ -1,42 +1,44 @@
-package Level2;
 import java.util.Scanner;
 
 public class Level2Q9 {
-    public static boolean isPositive(int num) {
-        return num >= 0;
-    }
-
-    public static boolean isEven(int num) {
-        return num % 2 == 0;
-    }
-
-    public static int compare(int a, int b) {
-        if (a > b) return 1;
-        else if (a == b) return 0;
-        else return -1;
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int[] arr = new int[5];
 
-        for (int i = 0; i < 5; i++) {
-            System.out.print("Enter number " + (i + 1) + ": ");
-            arr[i] = sc.nextInt();
-        }
+        System.out.print("Enter number of students: ");
+        int n = sc.nextInt();
 
-        for (int num : arr) {
-            if (isPositive(num)) {
-                System.out.println(num + " is Positive and " + (isEven(num) ? "Even" : "Odd"));
-            } else {
-                System.out.println(num + " is Negative");
+        double[][] marks = new double[n][3]; // 0=Physics, 1=Chemistry, 2=Maths
+        double[] percentage = new double[n];
+        String[] grades = new String[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter marks (0-100) for Physics, Chemistry, Maths of student " + (i + 1) + ":");
+            double p = sc.nextDouble();
+            double c = sc.nextDouble();
+            double m = sc.nextDouble();
+
+            if (p < 0 || c < 0 || m < 0) {
+                System.out.println("Marks cannot be negative. Re-enter student " + (i + 1));
+                i--;
+                continue;
             }
+            marks[i][0] = p;
+            marks[i][1] = c;
+            marks[i][2] = m;
         }
 
-        int cmp = compare(arr[0], arr[4]);
-        System.out.print("First and last number comparison: ");
-        if (cmp == 0) System.out.println("Equal");
-        else if (cmp == 1) System.out.println("First is Greater");
-        else System.out.println("Last is Greater");
+        for (int i = 0; i < n; i++) {
+            percentage[i] = (marks[i][0] + marks[i][1] + marks[i][2]) / 3.0;
+            if (percentage[i] >= 90) grades[i] = "A";
+            else if (percentage[i] >= 75) grades[i] = "B";
+            else if (percentage[i] >= 50) grades[i] = "C";
+            else grades[i] = "F";
+        }
+
+        System.out.println("Physics\tChemistry\tMaths\tPercentage\tGrade");
+        for (int i = 0; i < n; i++) {
+            System.out.printf("%.2f\t%.2f\t\t%.2f\t%.2f\t\t%s\n",
+                    marks[i][0], marks[i][1], marks[i][2], percentage[i], grades[i]);
+        }
     }
 }
